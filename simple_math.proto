@@ -1,0 +1,20 @@
+syntax = "proto3"; //申明用proto3的语法，否则会默认使用proto2。
+
+package simplemath; //即该文件中定义的所有类将会在simplemath这个作用域内
+
+service SimpleMath{ //声明整个服务器函数，将会被编译为一个类
+	//声明加法函数的接口
+	rpc intSum(Numbers) returns (Result) {};
+	//声明乘法函数的接口
+	rpc intMult(Numbers) returns (Result) {};
+}
+
+message Numbers{
+	int64 a = 1;
+    int64 b = 2;
+    string name = 3; //这里name只是用于示例string类别的message，对加法函数没有含义
+}
+
+message Result{
+	int64 res = 1;
+}
